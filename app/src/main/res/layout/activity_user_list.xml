@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.androidmvvm.presentation.user.UserListViewModel" />
+
+        <!-- UserListAdapterをRecyclerViewにセットするため-->
+        <import type="com.example.androidmvvm.presentation.user.UserListAdaptor" />
+
+        <!-- Viewクラスを使用するため -->
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adapter="@{viewModel.adapter}"
+            android:visibility="@{viewModel.isExist ? View.VISIBLE : View.GONE}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.isDisplay ? View.VISIBLE : View.GONE}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@{viewModel.message}"
+            android:visibility="@{viewModel.isExist ? View.GONE : View.VISIBLE}" />
+
+    </RelativeLayout>
+
+</layout>
