@@ -13,6 +13,26 @@ androidmvvm
 └── presentation # UIに関するクラス郡
     └── user
 ```
+## Library
+
+- [Dagger2](https://github.com/google/dagger)
+- [RxAndroid](https://github.com/ReactiveX/RxAndroid)
+- [RxJava](https://github.com/ReactiveX/RxJava)
+- [RxKotlin](https://github.com/ReactiveX/RxKotlin)
+- [Retrofit2](https://github.com/square/retrofit)
+- [Moshi](https://github.com/square/moshi)
+- [Timber](https://github.com/JakeWharton/timber)
+
+### Android Architecture Components
+
+- [Handling Lifecycles](https://developer.android.com/topic/libraries/architecture/lifecycle)
+
+### Android Support Libraries
+
+- DataBinding
+- Constraint Layout
+- Appcompat v7
+- Recyclerview v7
 
 ## API
 
