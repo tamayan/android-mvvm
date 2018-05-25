@@ -19,6 +19,7 @@ androidmvvm
 - [RxAndroid](https://github.com/ReactiveX/RxAndroid)
 - [RxJava](https://github.com/ReactiveX/RxJava)
 - [RxKotlin](https://github.com/ReactiveX/RxKotlin)
+- [RxBinding](https://github.com/JakeWharton/RxBinding)
 - [Retrofit2](https://github.com/square/retrofit)
 - [Moshi](https://github.com/square/moshi)
 - [Timber](https://github.com/JakeWharton/timber)

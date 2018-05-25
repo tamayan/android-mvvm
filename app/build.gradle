@@ -64,6 +64,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    // Architecture Component
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+
     // Support Library
     //noinspection GradleCompatible
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
@@ -79,6 +82,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.8'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.0'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.1.0'
 
     // API Client
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
