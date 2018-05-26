@@ -11,9 +11,6 @@ import javax.inject.Inject
 
 class UserListActivity : AppCompatActivity() {
 
-    /**
-     * ViewModel
-     */
     @Inject
     lateinit var viewModel: UserListViewModel
 
@@ -32,10 +29,8 @@ class UserListActivity : AppCompatActivity() {
     }
 
     private fun setUp() {
-        // Handling Lifecycles
         lifecycle.addObserver(viewModel)
 
-        // DataBinding
         val binding = DataBindingUtil.setContentView<ActivityUserListBinding>(this, R.layout.activity_user_list)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel

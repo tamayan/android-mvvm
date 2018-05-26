@@ -19,7 +19,6 @@ class UserListModule(private val userListActivity: UserListActivity) {
 
     @Provides
     fun provideViewModel(userRepository: UserRepository): UserListViewModel {
-        // ViewModel
         return ViewModelProviders
                 .of(userListActivity, UserListViewModel.Factory(userRepository))
                 .get(UserListViewModel::class.java)

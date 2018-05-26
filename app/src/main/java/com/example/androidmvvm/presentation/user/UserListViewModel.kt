@@ -22,7 +22,6 @@ import javax.inject.Inject
 class UserListViewModel @Inject constructor(
         private val userRepository: UserRepository) : ViewModel(), LifecycleObserver {
 
-    // LiveData
     val adapter = MutableLiveData<UserListAdaptor>()
 
     val message = MutableLiveData<String>()
