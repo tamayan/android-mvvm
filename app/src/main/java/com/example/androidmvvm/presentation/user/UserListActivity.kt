@@ -1,6 +1,5 @@
 package com.example.androidmvvm.presentation.user
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.androidmvvm.R
@@ -10,6 +9,9 @@ import com.example.androidmvvm.presentation.myApplication
 import javax.inject.Inject
 
 class UserListActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var binding: ActivityUserListBinding
 
     @Inject
     lateinit var viewModel: UserListViewModel
@@ -30,8 +32,6 @@ class UserListActivity : AppCompatActivity() {
 
     private fun setUp() {
         lifecycle.addObserver(viewModel)
-
-        val binding = DataBindingUtil.setContentView<ActivityUserListBinding>(this, R.layout.activity_user_list)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
     }
