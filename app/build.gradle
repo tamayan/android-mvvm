@@ -66,6 +66,8 @@ dependencies {
 
     // Architecture Component
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
     // Support Library
     //noinspection GradleCompatible
