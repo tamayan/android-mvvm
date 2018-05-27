@@ -28,7 +28,7 @@ class UserListViewModel @Inject constructor(
 
     val isExist = MutableLiveData<Boolean>()
 
-    val isDisplay = MutableLiveData<Boolean>()
+    val isLoading = MutableLiveData<Boolean>()
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -42,8 +42,8 @@ class UserListViewModel @Inject constructor(
                 .userList
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .doOnSubscribe { isDisplay.value = true }
-                .doFinally { isDisplay.value = false }
+                .doOnSubscribe { isLoading.value = true }
+                .doFinally { isLoading.value = false }
                 .subscribeBy(
                         onSuccess = {
                             isExist.value = it.isNotEmpty()
