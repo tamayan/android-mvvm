@@ -38,8 +38,37 @@ class UserListViewModel @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
+        fetch()
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun onDestroy() {
+        // 購読を解除
+        compositeDisposable.clear()
+    }
+
+    private fun fetch() {
         userRepository
-                .userList
+                .fetch()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe { isLoading.value = true }
+                .doFinally { isLoading.value = false }
+                .subscribeBy(
+                        onComplete = {
+                            findAll()
+                        },
+                        onError = {
+                            isExist.value = false
+                            message.value = it.message.toString()
+                        }
+                )
+                .addTo(compositeDisposable)
+    }
+
+    private fun findAll() {
+        userRepository
+                .findAll()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe { isLoading.value = true }
@@ -55,12 +84,6 @@ class UserListViewModel @Inject constructor(
                         }
                 )
                 .addTo(compositeDisposable)
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy() {
-        // 購読を解除
-        compositeDisposable.clear()
     }
 
     class Factory(private val userRepository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
