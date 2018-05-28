@@ -1,4 +1,4 @@
-package com.example.androidmvvm.data.user
+package com.example.androidmvvm.data.user.api
 
 import com.squareup.moshi.Json
 

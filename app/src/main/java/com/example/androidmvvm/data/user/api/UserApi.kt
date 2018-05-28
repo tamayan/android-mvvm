@@ -1,4 +1,4 @@
-package com.example.androidmvvm.data.user
+package com.example.androidmvvm.data.user.api
 
 import io.reactivex.Single
 import retrofit2.http.GET
