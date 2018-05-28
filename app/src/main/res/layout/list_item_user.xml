@@ -26,12 +26,6 @@
             android:padding="@dimen/space_small"
             android:text="@{user.lastName}" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/space_small"
-            android:text="@{String.valueOf(user.age)}" />
-
     </LinearLayout>
 
 </layout>
