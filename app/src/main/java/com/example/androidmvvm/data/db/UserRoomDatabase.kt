@@ -1,6 +1,5 @@
-package com.example.androidmvvm.data.user.db
+package com.example.androidmvvm.data.db
 
-import com.example.androidmvvm.data.AppDatabase
 import io.reactivex.Single
 
 class UserRoomDatabase(private val appDatabase: AppDatabase,

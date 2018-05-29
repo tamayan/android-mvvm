@@ -1,12 +1,12 @@
 package com.example.androidmvvm.di.user
 
 import android.arch.lifecycle.ViewModelProviders
-import com.example.androidmvvm.data.AppDatabase
-import com.example.androidmvvm.data.user.UserRepositoryImpl
-import com.example.androidmvvm.data.user.api.UserApi
-import com.example.androidmvvm.data.user.db.UserDatabase
-import com.example.androidmvvm.data.user.db.UserRoomDatabase
-import com.example.androidmvvm.domain.user.UserRepository
+import com.example.androidmvvm.data.UserRepositoryImpl
+import com.example.androidmvvm.data.api.UserApi
+import com.example.androidmvvm.data.db.AppDatabase
+import com.example.androidmvvm.data.db.UserDatabase
+import com.example.androidmvvm.data.db.UserRoomDatabase
+import com.example.androidmvvm.domain.UserRepository
 import com.example.androidmvvm.presentation.user.UserListActivity
 import com.example.androidmvvm.presentation.user.UserListViewModel
 import dagger.Module

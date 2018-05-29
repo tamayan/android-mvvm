@@ -1,4 +1,4 @@
-package com.example.androidmvvm.domain.user
+package com.example.androidmvvm.domain
 
 import io.reactivex.Single
 

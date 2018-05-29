@@ -4,8 +4,8 @@ import android.app.Application
 import android.arch.persistence.room.Room
 import android.util.Base64
 import com.example.androidmvvm.BuildConfig
-import com.example.androidmvvm.data.AppDatabase
-import com.example.androidmvvm.data.user.api.UserApi
+import com.example.androidmvvm.data.db.AppDatabase
+import com.example.androidmvvm.data.api.UserApi
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module

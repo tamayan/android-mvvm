@@ -5,7 +5,7 @@
 
         <variable
             name="user"
-            type="com.example.androidmvvm.domain.user.User" />
+            type="com.example.androidmvvm.domain.User" />
     </data>
 
     <LinearLayout

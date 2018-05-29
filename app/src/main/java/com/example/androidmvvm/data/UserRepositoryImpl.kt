@@ -1,10 +1,10 @@
-package com.example.androidmvvm.data.user
+package com.example.androidmvvm.data
 
-import com.example.androidmvvm.data.user.api.UserApi
-import com.example.androidmvvm.data.user.db.UserDatabase
-import com.example.androidmvvm.data.user.db.UserEntity
-import com.example.androidmvvm.domain.user.User
-import com.example.androidmvvm.domain.user.UserRepository
+import com.example.androidmvvm.data.api.UserApi
+import com.example.androidmvvm.data.db.UserDatabase
+import com.example.androidmvvm.data.db.UserEntity
+import com.example.androidmvvm.domain.User
+import com.example.androidmvvm.domain.UserRepository
 import io.reactivex.Observable
 import io.reactivex.Single
 

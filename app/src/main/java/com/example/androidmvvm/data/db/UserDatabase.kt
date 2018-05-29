@@ -1,4 +1,4 @@
-package com.example.androidmvvm.data.user.db
+package com.example.androidmvvm.data.db
 
 import io.reactivex.Single
 
