@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.androidmvvm.databinding.ListItemUserBinding
-import com.example.androidmvvm.domain.user.User
+import com.example.androidmvvm.domain.User
 import com.example.androidmvvm.presentation.user.UserListAdaptor.BindViewHolder
 
 class UserListAdaptor : RecyclerView.Adapter<BindViewHolder>() {

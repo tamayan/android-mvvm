@@ -1,22 +1,32 @@
 package com.example.androidmvvm.di.user
 
-import com.example.androidmvvm.data.user.UserApi
-import com.example.androidmvvm.data.user.UserRepositoryImpl
-import com.example.androidmvvm.domain.user.UserRepository
+import android.arch.lifecycle.ViewModelProviders
+import com.example.androidmvvm.data.UserRepositoryImpl
+import com.example.androidmvvm.data.api.UserApi
+import com.example.androidmvvm.data.db.AppDatabase
+import com.example.androidmvvm.data.db.UserDatabase
+import com.example.androidmvvm.data.db.UserRoomDatabase
+import com.example.androidmvvm.domain.UserRepository
+import com.example.androidmvvm.presentation.user.UserListActivity
 import com.example.androidmvvm.presentation.user.UserListViewModel
 import dagger.Module
 import dagger.Provides
-import kotlin.reflect.jvm.internal.impl.javax.inject.Singleton
 
 @Module
-class UserListModule {
+class UserListModule(private val userListActivity: UserListActivity) {
 
     @Provides
-    @Singleton
-    fun provideUserRepository(userApi: UserApi):
-            UserRepository = UserRepositoryImpl(userApi)
+    fun provideUserDatabase(appDatabase: AppDatabase): UserDatabase =
+            UserRoomDatabase(appDatabase, appDatabase.userDao())
 
     @Provides
-    fun provideViewModel(userRepository: UserRepository):
-            UserListViewModel = UserListViewModel(userRepository)
+    fun provideUserRepository(userApi: UserApi, userDatabase: UserDatabase): UserRepository =
+            UserRepositoryImpl(userApi, userDatabase)
+
+    @Provides
+    fun provideViewModel(userRepository: UserRepository): UserListViewModel {
+        return ViewModelProviders
+                .of(userListActivity, UserListViewModel.Factory(userRepository))
+                .get(UserListViewModel::class.java)
+    }
 }

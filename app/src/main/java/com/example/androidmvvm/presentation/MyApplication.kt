@@ -15,7 +15,7 @@ class MyApplication : Application() {
     val applicationComponent: ApplicationComponent by lazy {
         DaggerApplicationComponent
                 .builder()
-                .applicationModule(ApplicationModule())
+                .applicationModule(ApplicationModule(this))
                 .build()
     }
 

@@ -5,14 +5,15 @@
 ```tree
 androidmvvm
 ├── data # データ源となるクラス郡
-│   └── user
+│   ├── api
+│   └── db
 ├── di # 依存関係を解決するクラス郡
-│   └── user 
-├── domain # アプリケーション全体の構造を表すクラス郡
 │   └── user
+├── domain # アプリケーション全体の構造を表すクラス郡
 └── presentation # UIに関するクラス郡
     └── user
 ```
+
 ## Library
 
 - [Dagger2](https://github.com/google/dagger)
@@ -26,6 +27,9 @@ androidmvvm
 ### Android Architecture Components
 
 - [Handling Lifecycles](https://developer.android.com/topic/libraries/architecture/lifecycle)
+- [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+- [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+- [Room](https://developer.android.com/topic/libraries/architecture/room)
 
 ### Android Support Libraries
 

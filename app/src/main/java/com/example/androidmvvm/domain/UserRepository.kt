@@ -1,4 +1,4 @@
-package com.example.androidmvvm.domain.user
+package com.example.androidmvvm.domain
 
 import io.reactivex.Single
 
@@ -8,5 +8,5 @@ import io.reactivex.Single
 
 interface UserRepository {
 
-    val userList: Single<List<User>>
+    fun fetch(): Single<List<User>>
 }

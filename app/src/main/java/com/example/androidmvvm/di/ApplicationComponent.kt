@@ -1,7 +1,9 @@
 package com.example.androidmvvm.di
 
-import com.example.androidmvvm.data.user.UserApi
+import com.example.androidmvvm.data.db.AppDatabase
+import com.example.androidmvvm.data.api.UserApi
 import com.example.androidmvvm.di.user.UserListComponent
+import com.example.androidmvvm.di.user.UserListModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,7 +15,9 @@ import javax.inject.Singleton
 @Component(modules = [(ApplicationModule::class)])
 interface ApplicationComponent {
 
-    fun userListComponent(): UserListComponent
+    fun userListComponent(userListModule: UserListModule): UserListComponent
+
+    fun appDatabase(): AppDatabase
 
     fun userApi(): UserApi
 }
