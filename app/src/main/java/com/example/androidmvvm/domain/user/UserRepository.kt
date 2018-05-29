@@ -1,6 +1,5 @@
 package com.example.androidmvvm.domain.user
 
-import io.reactivex.Completable
 import io.reactivex.Single
 
 /**
@@ -9,7 +8,5 @@ import io.reactivex.Single
 
 interface UserRepository {
 
-    fun fetch(): Completable
-
-    fun findAll(): Single<List<User>>
+    fun fetch(): Single<List<User>>
 }
