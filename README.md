@@ -5,14 +5,15 @@
 ```tree
 androidmvvm
 ├── data # データ源となるクラス郡
-│   └── user
+│   ├── api
+│   └── db
 ├── di # 依存関係を解決するクラス郡
-│   └── user 
-├── domain # アプリケーション全体の構造を表すクラス郡
 │   └── user
+├── domain # アプリケーション全体の構造を表すクラス郡
 └── presentation # UIに関するクラス郡
     └── user
 ```
+
 ## Library
 
 - [Dagger2](https://github.com/google/dagger)
