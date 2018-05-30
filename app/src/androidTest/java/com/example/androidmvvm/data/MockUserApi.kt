@@ -11,9 +11,9 @@ class MockUserApi(private val delegate: BehaviorDelegate<UserApi>) : UserApi {
 
     override fun getUserList(): Single<UserListJson> {
         val userListJson = UserListJson(createList())
-        return Single.create {
-            it.onSuccess(userListJson)
-        }
+        return delegate
+                .returningResponse(userListJson)
+                .getUserList()
     }
 
     private fun createList(): List<UserJson> {

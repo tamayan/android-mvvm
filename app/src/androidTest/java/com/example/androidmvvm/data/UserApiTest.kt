@@ -6,7 +6,6 @@ import com.example.androidmvvm.data.api.UserApi
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import io.reactivex.Observable
-import junit.framework.TestCase
 import okhttp3.OkHttpClient
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
@@ -19,20 +18,22 @@ import retrofit2.mock.MockRetrofit
 import retrofit2.mock.NetworkBehavior
 
 @RunWith(AndroidJUnit4::class)
-class UserApiTest : TestCase() {
+class UserApiTest {
 
     @Test
     fun getUserTest() {
         val delegate = buildMockRetrofit().create(UserApi::class.java)
+
         MockUserApi(delegate)
                 .getUserList()
                 .flatMapObservable { Observable.fromIterable(it.userList) }
-                .filter { it.id == 0 }
                 .test()
+                .await()
                 .assertNoErrors()
+                .assertComplete()
                 .assertValue {
                     assertThat(it.firstName, `is`("Masayuki"))
-                        true
+                    true
                 }
     }
 
