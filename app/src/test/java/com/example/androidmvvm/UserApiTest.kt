@@ -1,7 +1,5 @@
-package com.example.androidmvvm.data
+package com.example.androidmvvm
 
-import android.support.test.runner.AndroidJUnit4
-import com.example.androidmvvm.BuildConfig
 import com.example.androidmvvm.data.api.UserApi
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
@@ -10,14 +8,12 @@ import okhttp3.OkHttpClient
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
-import org.junit.runner.RunWith
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.mock.MockRetrofit
 import retrofit2.mock.NetworkBehavior
 
-@RunWith(AndroidJUnit4::class)
 class UserApiTest {
 
     @Test

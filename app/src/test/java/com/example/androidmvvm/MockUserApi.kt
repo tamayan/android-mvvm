@@ -1,4 +1,4 @@
-package com.example.androidmvvm.data
+package com.example.androidmvvm
 
 import com.example.androidmvvm.data.api.UserApi
 import com.example.androidmvvm.data.api.UserJson
