@@ -40,7 +40,7 @@ class ApplicationModule(private val application: Application) {
     fun provideOkhttpClient(): OkHttpClient {
         return OkHttpClient
                 .Builder()
-                .addNetworkInterceptor({ chain ->
+                .addNetworkInterceptor { chain ->
                     // ユーザー名とパスワードを連結
                     val basicKey = BuildConfig.BASIC_USER_NAME + ":" + BuildConfig.BASIC_PASS
                     // バイト文字に変換
@@ -48,7 +48,7 @@ class ApplicationModule(private val application: Application) {
                     // Request Header にBasic認証を追加
                     val request = chain.request().newBuilder().addHeader("Authorization", value).build()
                     chain.proceed(request)
-                })
+                }
                 .build()
     }
 
