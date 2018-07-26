@@ -17,6 +17,9 @@ android {
         versionCode code_major + code_minor + code_patch
         versionName "${major}.${minor}.${patch}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // Room Database Name
+        buildConfigField 'String', "$key_room_database_name", "\"$room_database_name\""
     }
 
     buildTypes {

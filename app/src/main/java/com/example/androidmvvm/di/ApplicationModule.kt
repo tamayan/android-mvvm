@@ -31,7 +31,7 @@ class ApplicationModule(private val application: Application) {
                 .databaseBuilder(
                         application,
                         AppDatabase::class.java,
-                        "AppDatabase.db")
+                        BuildConfig.ROOM_DATABASE_NAME)
                 .build()
     }
 
