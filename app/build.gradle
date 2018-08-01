@@ -8,6 +8,12 @@ def code_major = (major as int) * 10000
 def code_minor = (minor as int) * 100
 def code_patch = patch as int
 
+def getLocalProperties(String key) {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    return properties.getProperty(key)
+}
+
 android {
 
     defaultConfig {
@@ -19,7 +25,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // Room Database Name
-        buildConfigField 'String', "$key_room_database_name", "\"$room_database_name\""
+        buildConfigField 'String', "$key_room_database_name", "\"${getLocalProperties("room_database_name")}\""
     }
 
     buildTypes {
@@ -28,24 +34,24 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            buildConfigField 'String', "$key_base_url", "\"$release_base_url\""
-            buildConfigField 'String', "$key_basic_user_name", "\"$release_user_name\""
-            buildConfigField 'String', "$key_basic_pass", "\"$release_password\""
+            buildConfigField "String", "$key_base_url", "\"${getLocalProperties("release_base_url")}\""
+            buildConfigField "String", "$key_basic_user_name", "\"${getLocalProperties("release_user_name")}\""
+            buildConfigField "String", "$key_basic_pass", "\"${getLocalProperties("release_password")}\""
         }
 
         debug {
-            buildConfigField 'String', "$key_base_url", "\"$debug_base_url\""
-            buildConfigField 'String', "$key_basic_user_name", "\"$debug_user_name\""
-            buildConfigField 'String', "$key_basic_pass", "\"$debug_password\""
+            buildConfigField "String", "$key_base_url", "\"${getLocalProperties("debug_base_url")}\""
+            buildConfigField "String", "$key_basic_user_name", "\"${getLocalProperties("debug_user_name")}\""
+            buildConfigField "String", "$key_basic_pass", "\"${getLocalProperties("debug_password")}\""
         }
 
         local {
             debuggable true
             initWith debug
 
-            buildConfigField 'String', "$key_base_url", "\"$local_base_url\""
-            buildConfigField 'String', "$key_basic_user_name", "\"$local_user_name\""
-            buildConfigField 'String', "$key_basic_pass", "\"$local_password\""
+            buildConfigField "String", "$key_base_url", "\"${getLocalProperties("local_base_url")}\""
+            buildConfigField "String", "$key_basic_user_name", "\"${getLocalProperties("local_user_name")}\""
+            buildConfigField "String", "$key_basic_pass", "\"${getLocalProperties("local_password")}\""
         }
     }
 
