@@ -2,7 +2,6 @@ package com.example.androidmvvm.di
 
 import android.app.Application
 import android.arch.persistence.room.Room
-import android.util.Base64
 import com.example.androidmvvm.BuildConfig
 import com.example.androidmvvm.data.api.UserApi
 import com.example.androidmvvm.data.db.AppDatabase
@@ -10,6 +9,7 @@ import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
+import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -41,12 +41,16 @@ class ApplicationModule(private val application: Application) {
         return OkHttpClient
                 .Builder()
                 .addNetworkInterceptor { chain ->
-                    // ユーザー名とパスワードを連結
-                    val basicKey = BuildConfig.BASIC_USER_NAME + ":" + BuildConfig.BASIC_PASS
-                    // バイト文字に変換
-                    val value = Base64.encodeToString(basicKey.toByteArray(), Base64.NO_WRAP)
-                    // Request Header にBasic認証を追加
-                    val request = chain.request().newBuilder().addHeader("Authorization", value).build()
+                    // Basic Authentication
+                    val credential = Credentials.basic(
+                            BuildConfig.BASIC_USER_NAME,
+                            BuildConfig.BASIC_PASS
+                    )
+                    val request = chain
+                            .request()
+                            .newBuilder()
+                            .addHeader("Authorization", credential)
+                            .build()
                     chain.proceed(request)
                 }
                 .build()
