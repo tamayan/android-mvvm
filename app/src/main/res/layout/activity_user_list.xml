@@ -19,24 +19,14 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:OnRefreshListener="@{() -> viewModel.onCreate()}"
-        android:refreshing="@{viewModel.isLoading}">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adapter="@{viewModel.adapter}"
-            android:visibility="@{viewModel.isExist ? View.VISIBLE : View.GONE}"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@{viewModel.message}"
-            android:visibility="@{viewModel.isExist ? View.GONE : View.VISIBLE}" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
