@@ -46,8 +46,9 @@ android {
         }
 
         local {
-            debuggable true
             initWith debug
+            debuggable true
+            minifyEnabled true
 
             buildConfigField "String", "$key_base_url", "\"${getLocalProperties("local_base_url")}\""
             buildConfigField "String", "$key_basic_user_name", "\"${getLocalProperties("local_user_name")}\""
@@ -88,9 +89,7 @@ dependencies {
     kapt "android.arch.persistence.room:compiler:$room_version"
 
     // Dependency Injection
-    implementation "com.google.dagger:dagger:$dagger_version"
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "org.koin:koin-android-architecture:$koin_version"
 
     // Reactive X
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
@@ -113,6 +112,8 @@ dependencies {
 
     // Test Library
     testImplementation "junit:junit:$junit_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+    testImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin"
     androidTestImplementation "com.android.support.test:runner:$test_runner_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
 }
