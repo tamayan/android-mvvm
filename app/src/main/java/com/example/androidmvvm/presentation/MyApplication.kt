@@ -1,29 +1,31 @@
 package com.example.androidmvvm.presentation
 
-import android.app.Activity
 import android.app.Application
-import com.example.androidmvvm.BuildConfig
-import com.example.androidmvvm.di.ApplicationComponent
-import com.example.androidmvvm.di.ApplicationModule
-import com.example.androidmvvm.di.DaggerApplicationComponent
-import timber.log.Timber
-import timber.log.Timber.DebugTree
+import com.example.androidmvvm.di.apiModule
+import com.example.androidmvvm.di.databaseModule
+import com.example.androidmvvm.di.moshiModule
+import com.example.androidmvvm.di.okHttpModule
+import com.example.androidmvvm.di.repositoryModule
+import com.example.androidmvvm.di.retrofitModule
+import com.example.androidmvvm.di.viewModelModule
+import org.koin.android.ext.android.startKoin
 
 
 class MyApplication : Application() {
 
-    val applicationComponent: ApplicationComponent by lazy {
-        DaggerApplicationComponent
-                .builder()
-                .applicationModule(ApplicationModule(this))
-                .build()
-    }
-
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG)
-            Timber.plant(DebugTree())
+//        if (BuildConfig.DEBUG)
+//            Timber.plant(DebugTree())
+
+        startKoin(this, listOf(
+                retrofitModule,
+                moshiModule,
+                okHttpModule,
+                apiModule,
+                databaseModule,
+                repositoryModule,
+                viewModelModule)
+        )
     }
 }
-
-val Activity.myApplication get() = application as MyApplication
