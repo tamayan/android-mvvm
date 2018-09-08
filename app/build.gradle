@@ -25,7 +25,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // Room Database Name
-        buildConfigField 'String', "$key_room_database_name", "\"${getLocalProperties("room_database_name")}\""
+        buildConfigField 'String', "$key_room_database_name", "\"$room_database_name\""
     }
 
     buildTypes {
@@ -48,7 +48,6 @@ android {
         local {
             initWith debug
             debuggable true
-            minifyEnabled true
 
             buildConfigField "String", "$key_base_url", "\"${getLocalProperties("local_base_url")}\""
             buildConfigField "String", "$key_basic_user_name", "\"${getLocalProperties("local_user_name")}\""
