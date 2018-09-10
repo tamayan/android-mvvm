@@ -14,27 +14,27 @@ class UserListActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
 
     private val userListViewModel: UserListViewModel by viewModel()
 
+    private val binding: ActivityUserListBinding by lazy {
+        DataBindingUtil
+                .setContentView<ActivityUserListBinding>(
+                        this,
+                        R.layout.activity_user_list)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_list)
-        setUpDataBinding()
-        setUpViewModel()
+        // Listener
         swipeRefreshLayout.setOnRefreshListener(this)
-    }
 
-    override fun onRefresh() {
-        userListViewModel.load()
-    }
-
-    private fun setUpDataBinding() {
-        val binding: ActivityUserListBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_list)
         binding.viewModel = userListViewModel
-    }
-
-    private fun setUpViewModel() {
         userListViewModel.isLoading.observe(this, Observer<Boolean> {
             swipeRefreshLayout.isRefreshing = it as Boolean
         })
+        userListViewModel.load()
+    }
+
+    override fun onRefresh() {
         userListViewModel.load()
     }
 }
