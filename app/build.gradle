@@ -4,10 +4,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def code_major = (major as int) * 10000
-def code_minor = (minor as int) * 100
-def code_patch = patch as int
-
 def getLocalProperties(String key) {
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -17,12 +13,12 @@ def getLocalProperties(String key) {
 android {
 
     defaultConfig {
-        applicationId package_name
-        minSdkVersion min_sdk_version as int
-        targetSdkVersion target_sdk_version as int
-        versionCode code_major + code_minor + code_patch
-        versionName "${major}.${minor}.${patch}"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId 'com.example.androidmvvm'
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName '1.0.0'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // Room Database Name
         buildConfigField 'String', "$key_room_database_name", "\"$room_database_name\""
@@ -67,7 +63,12 @@ android {
         enabled = true
     }
 
-    compileSdkVersion compile_sdk_version as int
+    compileSdkVersion 30
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion '30.0.1'
 }
 
 dependencies {
@@ -75,46 +76,46 @@ dependencies {
 
     // Support Library
     //noinspection GradleCompatible
-    implementation "com.android.support.constraint:constraint-layout:$constraint_layout"
-    implementation "com.android.support:appcompat-v7:$support_lib_version"
-    implementation "com.android.support:recyclerview-v7:$support_lib_version"
-    implementation "com.android.support:support-v4:$support_lib_version"
+    implementation "com.android.support.constraint:constraint-layout:1.1.3"
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
 
     // Architecture Component
-    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
-    implementation "android.arch.persistence.room:runtime:$room_version"
-    implementation "android.arch.persistence.room:rxjava2:$room_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
-    kapt "android.arch.persistence.room:compiler:$room_version"
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    implementation "android.arch.persistence.room:rxjava2:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
 
     // Dependency Injection
-    implementation "org.koin:koin-android-architecture:$koin_version"
+    implementation "org.koin:koin-android-architecture:0.9.3"
 
     // Reactive X
-    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+    implementation "io.reactivex.rxjava2:rxjava:2.1.8"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
 
     // API Client
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.squareup.retrofit2:retrofit-mock:$retrofit_version"
+    implementation "com.squareup.retrofit2:retrofit:2.3.0"
+    implementation "com.squareup.retrofit2:converter-moshi:2.3.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    implementation "com.squareup.retrofit2:retrofit-mock:2.3.0"
 
     // Json Parser
-    implementation "com.squareup.moshi:moshi:$moshi_version"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
-    implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
+    implementation "com.squareup.moshi:moshi:1.5.0"
+    implementation "com.squareup.moshi:moshi-kotlin:1.5.0"
+    implementation "com.squareup.moshi:moshi-adapters:1.5.0"
 
     // Debug Log
-    implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "com.jakewharton.timber:timber:4.7.0"
 
     // Test Library
-    testImplementation "junit:junit:$junit_version"
-    testImplementation "org.koin:koin-test:$koin_version"
-    testImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin"
-    androidTestImplementation "com.android.support.test:runner:$test_runner_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.koin:koin-test:0.9.3"
+    testImplementation "com.nhaarman:mockito-kotlin:1.6.0"
+    androidTestImplementation "androidx.test:runner:1.2.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
 }
 
 kapt {
