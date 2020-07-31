@@ -1,18 +1,21 @@
 package com.example.androidmvvm.presentation.user
 
-import android.arch.lifecycle.Observer
-import android.databinding.DataBindingUtil
+
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+
 import com.example.androidmvvm.R
 import com.example.androidmvvm.databinding.ActivityUserListBinding
 import kotlinx.android.synthetic.main.activity_user_list.*
-import org.koin.android.architecture.ext.viewModel
+import org.koin.android.ext.android.inject
+
 
 class UserListActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
 
-    private val userListViewModel: UserListViewModel by viewModel()
+    private val userListViewModel: UserListViewModel by inject()
 
     private val binding: ActivityUserListBinding by lazy {
         DataBindingUtil

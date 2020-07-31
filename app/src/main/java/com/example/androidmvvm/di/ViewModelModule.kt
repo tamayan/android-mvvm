@@ -1,14 +1,14 @@
 package com.example.androidmvvm.di
 
 import com.example.androidmvvm.presentation.user.UserListViewModel
-import org.koin.android.architecture.ext.viewModel
-import org.koin.dsl.module.applicationContext
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
 /**
  * Created by kitagawayuki on 2018/09/08.
  */
 
-val viewModelModule = applicationContext {
+val viewModelModule = module {
 
     viewModel { UserListViewModel(get()) }
 }

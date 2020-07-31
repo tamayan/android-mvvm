@@ -1,10 +1,7 @@
 package com.example.androidmvvm.data.db
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
-import com.example.androidmvvm.data.db.UserDao
-import com.example.androidmvvm.data.db.UserEntity
-
+import androidx.room.Database
+import androidx.room.RoomDatabase
 
 @Database(entities = [UserEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

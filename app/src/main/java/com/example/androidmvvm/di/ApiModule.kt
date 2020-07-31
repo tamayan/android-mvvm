@@ -6,7 +6,7 @@ import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
-import org.koin.dsl.module.applicationContext
+import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.Retrofit.Builder
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -17,14 +17,14 @@ import java.util.concurrent.TimeUnit.SECONDS
  * Created by kitagawayuki on 2018/09/08.
  */
 
-val apiModule = applicationContext {
+val apiModule = module {
 
-    bean { get<Retrofit>().create(UserApi::class.java) }
+    single { get<Retrofit>().create(UserApi::class.java) }
 }
 
-val retrofitModule = applicationContext {
+val retrofitModule = module {
 
-    bean {
+    single {
         Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(get())
@@ -34,9 +34,9 @@ val retrofitModule = applicationContext {
     }
 }
 
-val moshiModule = applicationContext {
+val moshiModule = module {
 
-    bean {
+    single {
         Moshi
                 .Builder()
                 .add(KotlinJsonAdapterFactory())
@@ -44,9 +44,9 @@ val moshiModule = applicationContext {
     }
 }
 
-val okHttpModule = applicationContext {
+val okHttpModule = module {
 
-    bean {
+    single {
         OkHttpClient
                 .Builder()
                 .addNetworkInterceptor { chain ->

@@ -5,29 +5,29 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.example.androidmvvm.presentation.user.UserListViewModel" />
+                name="viewModel"
+                type="com.example.androidmvvm.presentation.user.UserListViewModel"/>
 
         <!-- UserListAdapterをRecyclerViewにセットするため-->
-        <import type="com.example.androidmvvm.presentation.user.UserListAdaptor" />
+        <import type="com.example.androidmvvm.presentation.user.UserListAdaptor"/>
 
         <!-- Viewクラスを使用するため -->
-        <import type="android.view.View" />
+        <import type="android.view.View"/>
 
     </data>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adapter="@{viewModel.adapter}"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+            android:layout_height="match_parent">
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adapter="@{viewModel.adapter}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </layout>

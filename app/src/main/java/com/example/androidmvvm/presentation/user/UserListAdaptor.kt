@@ -1,8 +1,8 @@
 package com.example.androidmvvm.presentation.user
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.example.androidmvvm.databinding.ListItemUserBinding
 import com.example.androidmvvm.domain.User
 import com.example.androidmvvm.presentation.user.UserListAdaptor.BindViewHolder

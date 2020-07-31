@@ -1,24 +1,24 @@
 package com.example.androidmvvm.di
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import com.example.androidmvvm.BuildConfig
 import com.example.androidmvvm.data.db.AppDatabase
 import com.example.androidmvvm.data.db.UserDatabase
 import com.example.androidmvvm.data.db.UserRoomDatabase
 import org.koin.android.ext.koin.androidApplication
-import org.koin.dsl.module.applicationContext
+import org.koin.dsl.module
 
 /**
  * Created by tamayan on 2018/09/08.
  */
 
-val databaseModule = applicationContext {
+val databaseModule = module {
 
-    bean { UserRoomDatabase(get(), get()) as UserDatabase }
+    factory { UserRoomDatabase(get(), get()) as UserDatabase }
 
-    bean { get<AppDatabase>().userDao() }
+    single { get<AppDatabase>().userDao() }
 
-    bean {
+    single {
         Room
                 .databaseBuilder(
                         androidApplication(),
