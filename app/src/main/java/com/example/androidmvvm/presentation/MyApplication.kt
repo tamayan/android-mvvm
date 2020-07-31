@@ -18,7 +18,7 @@ class MyApplication : Application() {
 
         startKoin {
             androidContext(this@MyApplication)
-            listOf(
+            modules(
                     retrofitModule,
                     moshiModule,
                     okHttpModule,

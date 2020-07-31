@@ -14,7 +14,7 @@ import org.koin.dsl.module
 
 val databaseModule = module {
 
-    factory { UserRoomDatabase(get(), get()) as UserDatabase }
+    factory<UserDatabase> { UserRoomDatabase(get(), get()) }
 
     single { get<AppDatabase>().userDao() }
 
