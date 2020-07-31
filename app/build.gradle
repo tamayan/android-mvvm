@@ -21,7 +21,7 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         // Room Database Name
-        buildConfigField 'String', "$key_room_database_name", "\"$room_database_name\""
+        buildConfigField 'String', 'ROOM_DATABASE_NAME', "\"$room_database_name\""
     }
 
     buildTypes {
@@ -30,24 +30,24 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            buildConfigField 'String', "$key_base_url", "\"${getLocalProperties('release_base_url')}\""
-            buildConfigField 'String', "$key_basic_user_name", "\"${getLocalProperties('release_base_url')}\""
-            buildConfigField 'String', "$key_basic_pass", "\"${getLocalProperties('release_base_url')}\""
+            buildConfigField 'String', 'BASE_URL', "\"${getLocalProperties('release_base_url')}\""
+            buildConfigField 'String', 'BASIC_USER_NAME', "\"${getLocalProperties('release_base_url')}\""
+            buildConfigField 'String', 'BASIC_PASS', "\"${getLocalProperties('release_base_url')}\""
         }
 
         debug {
-            buildConfigField 'String', "$key_base_url", "\"${getLocalProperties('debug_base_url')}\""
-            buildConfigField 'String', "$key_basic_user_name", "\"${getLocalProperties('debug_user_name')}\""
-            buildConfigField 'String', "$key_basic_pass", "\"${getLocalProperties('debug_password')}\""
+            buildConfigField 'String', 'BASE_URL', "\"${getLocalProperties('debug_base_url')}\""
+            buildConfigField 'String', 'BASIC_USER_NAME', "\"${getLocalProperties('debug_user_name')}\""
+            buildConfigField 'String', 'BASIC_PASS', "\"${getLocalProperties('debug_password')}\""
         }
 
         local {
             initWith debug
             debuggable true
 
-            buildConfigField 'String', "$key_base_url", "\"${getLocalProperties('local_base_url')}\""
-            buildConfigField 'String', "$key_basic_user_name", "\"${getLocalProperties('local_user_name')}\""
-            buildConfigField 'String', "$key_basic_pass", "\"${getLocalProperties('local_password')}\""
+            buildConfigField 'String', 'BASE_URL', "\"${getLocalProperties('local_base_url')}\""
+            buildConfigField 'String', 'BASIC_USER_NAME', "\"${getLocalProperties('local_user_name')}\""
+            buildConfigField 'String', 'BASIC_PASS', "\"${getLocalProperties('local_password')}\""
         }
     }
 
@@ -63,12 +63,14 @@ android {
         enabled = true
     }
 
+    buildToolsVersion '30.0.1'
+
     compileSdkVersion 30
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '30.0.1'
 }
 
 dependencies {
@@ -82,6 +84,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
     // Architecture Component
     implementation 'android.arch.lifecycle:extensions:1.1.1'
@@ -91,10 +94,16 @@ dependencies {
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
     kapt 'android.arch.persistence.room:compiler:1.1.1'
 
-    // Dependency Injection
-    implementation 'org.koin:koin-android:2.0.1'
-    implementation 'org.koin:koin-android-scope:2.0.1'
-    implementation 'org.koin:koin-android-viewmodel:2.0.1'
+    // Koin for Kotlin
+    // Core features
+    implementation "org.koin:koin-core:2.1.6"
+    implementation "org.koin:koin-core-ext:2.1.6"
+    testImplementation "org.koin:koin-test:2.1.6"
+    // AndroidX
+    implementation "org.koin:koin-androidx-scope:2.1.6"
+    implementation "org.koin:koin-androidx-viewmodel:2.1.6"
+    implementation "org.koin:koin-androidx-fragment:2.1.6"
+    implementation "org.koin:koin-androidx-ext:2.1.6"
 
     // Reactive X
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -117,7 +126,6 @@ dependencies {
 
     // Test Library
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.koin:koin-test:0.9.3'
     testImplementation 'com.nhaarman:mockito-kotlin:1.6.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

@@ -21,7 +21,7 @@ class UserRepositoryImpl(
         // 失敗：DBから取り出す
         return userApi
                 .getUserList()
-                .flatMapObservable { Observable.fromIterable(it.userList) }
+                .flatMapObservable { Observable.fromIterable(it) }
                 .map { User(it.id, it.firstName, it.lastName, it.birthdate, it.isRegular) }
                 .toList()
                 .onErrorResumeNext {

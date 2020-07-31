@@ -2,17 +2,15 @@ package com.example.androidmvvm
 
 import com.example.androidmvvm.data.api.UserApi
 import com.example.androidmvvm.data.api.UserJson
-import com.example.androidmvvm.data.api.UserListJson
 import io.reactivex.Single
 import retrofit2.mock.BehaviorDelegate
 
 
 class MockUserApi(private val delegate: BehaviorDelegate<UserApi>) : UserApi {
 
-    override fun getUserList(): Single<UserListJson> {
-        val userListJson = UserListJson(createList())
+    override fun getUserList(): Single<List<UserJson>> {
         return delegate
-                .returningResponse(userListJson)
+                .returningResponse(createList())
                 .getUserList()
     }
 

@@ -8,7 +8,6 @@ import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.Retrofit.Builder
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit.SECONDS
@@ -25,7 +24,8 @@ val apiModule = module {
 val retrofitModule = module {
 
     single {
-        Builder()
+        Retrofit
+                .Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(get())
                 .addConverterFactory(MoshiConverterFactory.create(get()))

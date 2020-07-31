@@ -9,6 +9,6 @@ import retrofit2.http.GET
 
 interface UserApi {
 
-    @GET("user-list.json")
-    fun getUserList(): Single<UserListJson>
+    @GET(value = "users")
+    fun getUserList(): Single<List<UserJson>>
 }

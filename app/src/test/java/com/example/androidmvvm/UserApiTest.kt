@@ -22,7 +22,7 @@ class UserApiTest {
 
         MockUserApi(delegate)
                 .getUserList()
-                .flatMapObservable { Observable.fromIterable(it.userList) }
+                .flatMapObservable { Observable.fromIterable(it) }
                 .test()
                 .await()
                 .assertNoErrors()

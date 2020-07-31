@@ -1,7 +1,7 @@
 package com.example.androidmvvm.di
 
 import com.example.androidmvvm.presentation.user.UserListViewModel
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 /**
@@ -10,5 +10,5 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
 
-    viewModel { UserListViewModel(get()) }
+    viewModel() { UserListViewModel(get()) }
 }
