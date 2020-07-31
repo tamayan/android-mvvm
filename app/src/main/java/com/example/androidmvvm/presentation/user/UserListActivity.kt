@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+
 import com.example.androidmvvm.R
 import com.example.androidmvvm.databinding.ActivityUserListBinding
 import kotlinx.android.synthetic.main.activity_user_list.*
@@ -26,7 +27,7 @@ class UserListActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_list)
-        swipeRefreshLayout.setOnRefreshListener(this)
+        binding.swipeRefreshLayout.setOnRefreshListener(this)
         binding.viewModel = userListViewModel
         userListViewModel.isLoading.observe(this, Observer<Boolean> {
             swipeRefreshLayout.isRefreshing = it as Boolean
