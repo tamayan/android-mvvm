@@ -2,8 +2,8 @@ package com.example.androidmvvm.di
 
 import com.example.androidmvvm.BuildConfig
 import com.example.androidmvvm.data.api.UserApi
-import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
