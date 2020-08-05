@@ -32,7 +32,7 @@ class UserRepositoryImpl(
                             .toList()
                 }
                 .doOnSuccess { userDatabase.save(it.map { UserEntity(it.id, it.firstName, it.lastName, it.birthdate, it.isRegular) }) }
-                .toCompletable()
+                .ignoreElement()
                 .andThen(userDatabase.findAll())
                 .flatMapObservable { Observable.fromIterable(it) }
                 .map { User(it.id, it.firstName, it.lastName, it.birthdate, it.isRegular) }
